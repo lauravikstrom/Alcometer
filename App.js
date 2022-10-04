@@ -40,8 +40,23 @@ export default function App() {
         setEndresult(0);
        } else {
        setEndresult(result);
-       }    
+       }
+  }
 
+  function colorResultNumber() {
+    if (endresult < 1) {
+      return {
+        color: 'green'
+      }
+    } else if (endresult < 2) {
+      return {
+        color: 'yellow'
+      }
+    } else if (endresult >= 2) {
+      return {
+        color: 'red'
+      }
+    }
   }
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -140,7 +155,7 @@ export default function App() {
             <Text
                 style={mode.result}>Result:</Text>
             <Text
-                style={mode.resultNumber}>
+                style={[mode.resultNumber, colorResultNumber()]}>
                 {endresult.toFixed(2)}</Text>
         </View>
     </ScrollView>
